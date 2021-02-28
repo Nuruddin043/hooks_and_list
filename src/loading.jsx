@@ -2,7 +2,8 @@ import React from 'react'
 import './loading.css'
 
 export default function Loading() {
-    console.log('hey')
+    console.log('loading....')
+  
     return (
         <>
             <div className="LoaderBalls">

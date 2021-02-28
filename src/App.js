@@ -8,7 +8,7 @@ import Loading from './loading'
 function App() {
   const [currentPage, setCurrentPage] = useState('product')
   const [currentProduct, setCurrentProduct] = useState('')
-  const [loading,setLoading]=useState(true)
+  const [loading,setLoading]=useState(false)
   const [productList, setProductlist] = useState([
     {
       name: "Product 1",
@@ -59,6 +59,9 @@ function App() {
     }
   },[currentProduct])
 
+  const updateLoadiingState=(state)=>{
+    setLoading(state)
+  }
 
 
 
@@ -72,10 +75,10 @@ function App() {
       }
       {
                 currentPage ==='product' ?
-                <Product products={productList} function={updatePage}/> :
+                <Product products={productList} function={updatePage} loading={updateLoadiingState}/> :
                 <>
                 <button onClick={onProductpage}>Product Page</button> <br />
-                <ProductDetail detail={currentProduct}/>
+                <ProductDetail detail={currentProduct} loading={updateLoadiingState}/>
                 </>
             }
     </>

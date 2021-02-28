@@ -1,17 +1,20 @@
-import React,{useState,useEffect} from 'react';
-import Loading from './loading'
+import React, {  useEffect } from 'react';
+
 
 const ProductDetail = (props) => {
-    const [loading, setLoading] = useState()
 
-      useEffect(() => {
-          setLoading(false)
-      })
+
+    useEffect(() => {
+        props.loading(false)
+        return (() => {
+            props.loading(true)
+        })
+    })
+
+  
     return (
         <>
-            {
-                loading && <Loading />
-            }
+
             name: {props.detail.name}  <br />
             description: {props.detail.description} <br />
             price: {props.detail.price} <br />
